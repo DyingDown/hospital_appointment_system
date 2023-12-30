@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.yao</groupId>
-        <artifactId>service</artifactId>
+        <artifactId>harp</artifactId>
         <version>1.0</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>service_user</artifactId>
