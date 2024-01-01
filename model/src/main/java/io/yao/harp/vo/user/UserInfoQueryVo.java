@@ -1,26 +1,25 @@
 package io.yao.harp.vo.user;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description="会员搜索对象")
+@Schema(description="会员搜索对象")
 public class UserInfoQueryVo {
 
-    @ApiModelProperty(value = "关键字")
+    @Schema(description = "关键字")
     private String keyword;
 
-    @ApiModelProperty(value = "状态")
+    @Schema(description = "状态")
     private Integer status;
 
-    @ApiModelProperty(value = "认证状态")
+    @Schema(description = "认证状态")
     private Integer authStatus;
 
-    @ApiModelProperty(value = "创建时间")
+    @Schema(description = "创建时间")
     private String createTimeBegin;
 
-    @ApiModelProperty(value = "创建时间")
+    @Schema(description = "创建时间")
     private String createTimeEnd;
 
 }

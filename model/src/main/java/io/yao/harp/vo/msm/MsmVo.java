@@ -1,22 +1,21 @@
 package io.yao.harp.vo.msm;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Map;
 
 @Data
-@ApiModel(description = "短信实体")
+@Schema(description = "短信实体")
 public class MsmVo {
 
-    @ApiModelProperty(value = "phone")
+    @Schema(description = "phone")
     private String phone;
 
-    @ApiModelProperty(value = "短信模板code")
+    @Schema(description = "短信模板code")
     private String templateCode;
 
-    @ApiModelProperty(value = "短信模板参数")
+    @Schema(description = "短信模板参数")
     private Map<String,Object> param;
 }

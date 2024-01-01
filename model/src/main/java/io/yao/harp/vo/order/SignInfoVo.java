@@ -2,8 +2,7 @@ package io.yao.harp.vo.order;
 
 import io.yao.harp.model.base.BaseMongoEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,15 +16,15 @@ import java.io.Serializable;
  * @author qy
  */
 @Data
-@ApiModel(description = "签名信息")
+@Schema(description = "签名信息")
 public class SignInfoVo  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "api基础路径")
+	@Schema(description = "api基础路径")
 	private String apiUrl;
 
-	@ApiModelProperty(value = "签名秘钥")
+	@Schema(description = "签名秘钥")
 	private String signKey;
 
 }

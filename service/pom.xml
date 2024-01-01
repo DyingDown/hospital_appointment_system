@@ -25,7 +25,7 @@
     <dependencies>
         <dependency>
             <groupId>io.yao</groupId>
-            <artifactId>service_utils</artifactId>
+            <artifactId>common_utils</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
@@ -33,6 +33,11 @@
             <artifactId>model</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.yao</groupId>
+            <artifactId>service_utils</artifactId>
+            <version>1.0</version>
         </dependency>
 
         <!--web-->
@@ -44,11 +49,13 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.3.1</version>
         </dependency>
         <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
         </dependency>
         <!--开发者工具-->
         <dependency>
