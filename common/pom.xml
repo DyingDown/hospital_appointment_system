@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.yao</groupId>
-        <artifactId>hospitalapointmentsystem</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <artifactId>harp</artifactId>
+        <version>1.0</version>
     </parent>
 
     <artifactId>common</artifactId>
@@ -29,6 +29,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.3.1</version>
             <scope>provided </scope>
         </dependency>
 
@@ -40,12 +41,9 @@
 
         <!--swagger-->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>LATEST</version>
         </dependency>
     </dependencies>
 
