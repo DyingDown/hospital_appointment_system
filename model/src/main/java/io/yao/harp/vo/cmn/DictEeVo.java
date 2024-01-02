@@ -17,16 +17,16 @@ public class DictEeVo {
 	@ExcelProperty(value = "id" ,index = 0)
 	private Long id;
 
-	@ExcelProperty(value = "上级id" ,index = 1)
+	@ExcelProperty(value = "parent id" ,index = 1)
 	private Long parentId;
 
-	@ExcelProperty(value = "名称" ,index = 2)
+	@ExcelProperty(value = "name" ,index = 2)
 	private String name;
 
-	@ExcelProperty(value = "值" ,index = 3)
+	@ExcelProperty(value = "value" ,index = 3)
 	private String value;
 
-	@ExcelProperty(value = "编码" ,index = 4)
+	@ExcelProperty(value = "encoding" ,index = 4)
 	private String dictCode;
 
 }

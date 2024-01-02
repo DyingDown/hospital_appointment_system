@@ -22,6 +22,7 @@ import java.util.Random;
 @RestController
 @RequestMapping("/admin/hosp/hospitalSet")
 @Tag(name = "Hospital Appointment and Registration Platform")
+@CrossOrigin
 public class HospitalSetController {
 
     @Autowired
@@ -85,7 +86,6 @@ public class HospitalSetController {
     @Operation(summary = "Get hopstial information by Id")
     @GetMapping("getHospitalSet/{id}")
     public Result getHospitalSetById(@PathVariable Long id) {
-        int i = 1 / 0;
         HospitalSet hospitalSet = hospitalSetService.getById(id);
         return Result.ok(hospitalSet);
     }
