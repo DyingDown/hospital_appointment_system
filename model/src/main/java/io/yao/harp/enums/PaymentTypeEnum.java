@@ -2,7 +2,8 @@ package io.yao.harp.enums;
 
 public enum PaymentTypeEnum {
     ALIPAY(1,"支付宝"),
-    WEIXIN(2,"微信" );
+    WEIXIN(2,"微信" ),
+    XXPAY(3, "XXPay");
 
     public Integer getStatus() {
         return status;

@@ -1,6 +1,8 @@
 package io.yao.harp.cmn.service.impl;
 
 import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.util.StringUtils;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.databind.util.BeanUtil;
@@ -11,6 +13,8 @@ import io.yao.harp.model.cmn.Dict;
 import io.yao.harp.vo.cmn.DictEeVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,6 +31,31 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     @Autowired
     private  DictMapper dictMapper;
 
+    @Override
+    public String getNameByCodeAndValue(String dictCode, String value) {
+        if(StringUtils.isEmpty(dictCode)) {
+            QueryWrapper<Dict> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("value", value);
+            Dict dict = baseMapper.selectOne(queryWrapper);
+            return dict.getName();
+        } else {
+            Dict dict = getDictByDictcode(dictCode);
+            Long parent_id = dict.getId();
+            Dict finalDict = baseMapper.selectOne(new QueryWrapper<Dict>()
+                    .eq("parent_id", parent_id)
+                    .eq("value", value));
+            return finalDict.getName();
+        }
+    }
+
+    private Dict getDictByDictcode(String dictCode) {
+        QueryWrapper<Dict> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("dict_code", dictCode);
+        return baseMapper.selectOne(queryWrapper);
+    }
+
+
+    @Cacheable(value = "dict",keyGenerator = "keyGenerator")
     @Override
     public List<Dict> findChildrenData(Long id) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
@@ -64,6 +93,8 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         }
     }
 
+
+    @CacheEvict(value = "dict", allEntries = true)
     @Override
     public void importDictData(MultipartFile file) {
         try {
@@ -71,6 +102,12 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<Dict> findDictByDictCode(String dictCode) {
+        Dict dict = this.getDictByDictcode(dictCode);
+        return this.findChildrenData(dict.getId());
     }
 
     private boolean hasChildData(Long id) {

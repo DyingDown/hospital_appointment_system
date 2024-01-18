@@ -19,7 +19,7 @@ public class SwaggerConfig {
     public GroupedOpenApi webApiConfig(){
 
         return GroupedOpenApi.builder()
-                .group("webApi")
+                .group("api")
                 .pathsToMatch("/api/**")
                 .build();
 
@@ -37,7 +37,7 @@ public class SwaggerConfig {
     public GroupedOpenApi adminApiConfig(){
 
         return GroupedOpenApi.builder()
-                .group("adminApi")
+                .group("admin")
                 .pathsToMatch("/admin/**")
                 .build();
 
@@ -74,8 +74,8 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI testConfig() {
         return new OpenAPI().info(new Info()
-                .title("代码平台 API")
-                .description("SpringDoc API 演示")
+                .title("Hospital Application And Registration Platform API")
+                .description("SpringDoc API Sample")
                 .version("v1.0.0")
         );
     }
