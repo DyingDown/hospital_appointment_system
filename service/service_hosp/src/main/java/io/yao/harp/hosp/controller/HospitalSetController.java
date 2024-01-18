@@ -22,7 +22,7 @@ import java.util.Random;
 @RestController
 @RequestMapping("/admin/hosp/hospitalSet")
 @Tag(name = "Hospital Appointment and Registration Platform")
-@CrossOrigin
+
 public class HospitalSetController {
 
     @Autowired
